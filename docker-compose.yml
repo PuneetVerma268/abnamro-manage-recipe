@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  abnamro-recipeapp-service:
+    container_name: "backend"
+    build: './abnamro-recipeapp-service'
+    ports:
+           - "8080:8080"
+    restart: always
+
+  abnamro-recipeapp-ui:
+    container_name: "frontend"
+    build: './abnamro-recipeapp-ui'
+    depends_on:
+      - "abnamro-recipeapp-service"
+    ports: 
+      - "4200:4200"
